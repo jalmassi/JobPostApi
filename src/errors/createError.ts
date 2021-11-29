@@ -1,6 +1,7 @@
-const createError = (status: number, message: string) => {
-  let error = new AppError(message);
-  error.status = status;
+import AppError from "./appError";
+
+const createError = (statusCode: number, defaultError: Error) => {
+  let error = new AppError(defaultError.message, statusCode);
   return error;
 };
 

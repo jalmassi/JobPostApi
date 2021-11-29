@@ -20,9 +20,6 @@ const commonErrors: Array<CommonError> = [
     status: "RESOURCE_NOT_FOUND",
     message: "Resource not found",
     statusCode: 404,
-    meta: {
-      translationKey: "app.common.error.RESOURCE_NOT_FOUND",
-    },
   },
 
   // Predefined 5xx http errors
@@ -30,9 +27,6 @@ const commonErrors: Array<CommonError> = [
     status: "INTERNAL_SERVER_ERROR",
     message: "Something went wrong, Please try again later.",
     statusCode: 500,
-    meta: {
-      shouldRedirect: true,
-    },
   },
   {
     status: "BAD_GATEWAY",
