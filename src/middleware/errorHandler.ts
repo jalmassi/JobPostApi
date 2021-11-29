@@ -3,7 +3,7 @@ import AppError from "../errors/appError";
 import errors from "../errors/commonErrors";
 import createError from "../errors/createError";
 import { Response, Request, NextFunction } from "express";
-import { CommonError } from "./../types/CommonError";
+import { CommonError } from "../interfaces/CommonError";
 
 const handleErrors = (err: any, req: Request, res: Response, next: NextFunction) => {
   const statusCode: number = err.statusCode || 500;
