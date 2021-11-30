@@ -7,7 +7,7 @@ const host: string = "localhost";
 const dbUsername: string = "root";
 const dbPassword: string = "Forget14";
 
-const knexConfig: any = Knex({
+export const knexConfig: any = Knex({
   client: dbClient,
   connection: {
     host: host,

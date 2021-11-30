@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { JobPosts } from "../models/JobPost";
+import { JobPost } from "../models/JobPost";
 
 export const jobPosts = async (req: Request, res: Response) => {
   try {
-    const response = await JobPosts.forge()
+    const response = await JobPost.forge()
       .fetchAll()
       .then((jobposts: any) => {
         const res = {

@@ -1,6 +1,6 @@
 import express, { Application, Request, Response } from "express";
 import { createConnection } from "mysql";
-import posts from "./routes/posts";
+import jobposts from "./routes/jobposts";
 import bodyParser from "body-parser";
 import logger from "morgan";
 import handleErrors from "./middleware/errorHandler";
@@ -9,7 +9,7 @@ import { bookShelf } from "./config/dbConfig";
 
 const app: Application = express();
 app.use(logger("combined"));
-app.use("/api/posts", posts);
+app.use("/api/jobposts", jobposts);
 app.use(bodyParser.json());
 
 
