@@ -127,6 +127,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/mockdate@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/mockdate/-/mockdate-3.0.0.tgz#ed140c46c4542964621e553d181faf62cadc973a"
+  integrity sha512-p2mDrXSBlcpz1JFRTzeF12g4yGpHgh8HKoOWUw6gE/+W/s+oXPfip/n1Z+qLyE7wU1NSWCslexEEd1FAlNCWPQ==
+  dependencies:
+    mockdate "*"
+
 "@types/morgan@^1.9.3":
   version "1.9.3"
   resolved "https://registry.npmjs.org/@types/morgan/-/morgan-1.9.3.tgz"
@@ -1643,6 +1650,11 @@ mock-knex@^0.4.10:
     bluebird "^3.4.1"
     lodash "^4.14.2"
     semver "^5.3.0"
+
+mockdate@*:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/mockdate/-/mockdate-3.0.5.tgz#789be686deb3149e7df2b663d2bc4392bc3284fb"
+  integrity sha512-iniQP4rj1FhBdBYS/+eQv7j1tadJ9lJtdzgOpvsOHng/GbcDh2Fhdeq+ZRldrPYdXvCyfFUmFeEwEGXZB5I/AQ==
 
 morgan@^1.10.0:
   version "1.10.0"
