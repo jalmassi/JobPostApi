@@ -4,34 +4,20 @@ import express from "express";
 import axios from "axios";
 import NodeCache from "node-cache";
 import errorHandler from "../middleware/errorHandler";
-import AppError from "../errors/appError";
+import AppError from "../errors/AppError";
 import { JobPost } from "../models/JobPost";
-import { getAllJobPosts } from "../controllers/jobPostController";
+import { createJobPost, getAllJobPosts, getJobPostById, updateJobPost } from "../controllers/jobPostController";
+import { createJobPostTable } from "../schemas/create_table";
 const router = express.Router();
 
-// router.get("/all", async (req:Request, res: Response, next: NextFunction) => {
-//   let jobPosts: any = await new JobPost().fetchAll();
-//   res.json(jobPosts);
-// });
-
-router.get("/id/:id", async (req: Request, res: Response) => {
-  let jobPost = await JobPost.where("id", id).fetch();
-  res.json(jobPost);
-});
-
-router.post("/users", async (req, res) => {
-  var user = await JobPost.forge({
-    name: req.query.name,
-    email: req.query.email,
-  }).save();
-  res.json(user);
-});
+Promise.all([
+  createJobPostTable
+  ]);
 
 router.get("/all", getAllJobPosts);
-
-const cache = new NodeCache({ stdTTL: 300 });
-
-let tagRequests: Array<string> = [];
+router.get("/id/:id", getJobPostById);
+router.post("/create", createJobPost);
+router.post("/update", updateJobPost);
 
 // router.get(`/`, async (req: Request, res: Response, next: NextFunction) => {
 //   if (req.query.tag === undefined || req.query.tag === "") return next(new AppError("No tag parameter included", 400));

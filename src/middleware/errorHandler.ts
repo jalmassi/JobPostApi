@@ -1,9 +1,9 @@
 "use strict";
-import AppError from "../errors/appError";
+import AppError from "../errors/AppError";
 import errors from "../errors/commonErrors";
 import createError from "../errors/createError";
 import { Response, Request, NextFunction } from "express";
-import { CommonError } from "../interfaces/CommonError";
+import { CommonError } from "../errors/CommonErrorDAO";
 
 const handleErrors = (err: any, req: Request, res: Response, next: NextFunction) => {
   const statusCode: number = err.statusCode || 500;

@@ -1,4 +1,4 @@
-import { CommonError } from "../interfaces/CommonError";
+import { CommonError } from "./CommonErrorDAO";
 
 const commonErrors: Array<CommonError> = [
   {

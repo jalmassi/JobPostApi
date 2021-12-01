@@ -1,7 +1,7 @@
 import { knexConfig } from "../config/dbConfig";
 
-knexConfig.schema
-  .createTable("jobposts", (table: any) => {
+export const createJobPostTable = knexConfig.schema
+  .createTableIfNotExists("jobposts", (table: any) => {
     table.increments("id");
     table.string("title");
     table.string("description");

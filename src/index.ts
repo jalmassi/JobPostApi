@@ -1,10 +1,9 @@
 import express, { Application, Request, Response } from "express";
-import { createConnection } from "mysql";
 import jobposts from "./routes/jobposts";
 import bodyParser from "body-parser";
 import logger from "morgan";
 import handleErrors from "./middleware/errorHandler";
-import AppError from "./errors/appError";
+import AppError from "./errors/AppError";
 import { bookShelf } from "./config/dbConfig";
 
 const app: Application = express();

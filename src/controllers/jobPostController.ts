@@ -1,23 +1,6 @@
 import { Request, Response } from "express";
 import { JobPost } from "../models/JobPost";
 
-export const jobPosts = async (req: Request, res: Response) => {
-  try {
-    const response = await JobPost.forge()
-      .fetchAll()
-      .then((jobposts: any) => {
-        const res = {
-          success: true,
-          data: jobposts,
-        };
-        return res;
-      });
-  } catch (e: unknown) {
-    console.error(`Failed to fetch the jobposts: ${e}`);
-  }
-};
-
-
 export const getAllJobPosts = async (req: Request, res: Response) =>{
     try{
        const response = await JobPost
@@ -89,7 +72,7 @@ export const createJobPost = async (req: Request, res: Response) =>{
 
 
 
-export const getJobPost = async (req: Request, res: Response) =>{
+export const getJobPostById = async (req: Request, res: Response) =>{
     try{
       const { id } = req.params
         const  response = await JobPost.forge({
@@ -129,7 +112,7 @@ export const getJobPost = async (req: Request, res: Response) =>{
 
 
 
-export const update = async (req: Request, res: Response) =>{
+export const updateJobPost = async (req: Request, res: Response) =>{
     try{
         const { id, title, description, location, hourlyPayRate } = req.body
         await JobPost
