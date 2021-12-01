@@ -22,9 +22,6 @@ knexConfig.schema
     table.timestamp("updated_at").defaultTo(knexConfig.fn.now());
   })
   .then(() => {
-    console.log("table created");
-  })
-  .then(() => {
     return knexConfig("jobposts").insert(jobpostsData).returning("*");
   })
   .then(() => {
@@ -35,6 +32,5 @@ knexConfig.schema
     throw error;
   })
   .finally(() => {
-    console.log("finally - destroy");
-    knexConfig.destroy();
+    console.log("created tables and inserted data");
   });

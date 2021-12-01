@@ -6,12 +6,12 @@ import logger from "morgan";
 import handleErrors from "./middleware/errorHandler";
 import AppError from "./errors/AppError";
 import { createJobPostApplicationTable } from "./schemas/create_table";
-import { bookShelf } from "./config/dbConfig";
+import { appRoute, jobpostRoute } from "./util/global";
 
 const app: Application = express();
 app.use(logger("combined"));
-app.use("/api/apps", applications);
-app.use("/api/jobposts", jobposts);
+app.use(appRoute, applications);
+app.use(jobpostRoute, jobposts);
 app.use(bodyParser.json());
 
 Promise.all([createJobPostApplicationTable]);
