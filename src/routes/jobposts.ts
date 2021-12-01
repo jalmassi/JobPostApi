@@ -6,12 +6,13 @@ import NodeCache from "node-cache";
 import errorHandler from "../middleware/errorHandler";
 import AppError from "../errors/appError";
 import { JobPost } from "../models/JobPost";
+import { getAllJobPosts } from "../controllers/jobPostController";
 const router = express.Router();
 
-router.get("/all", async (req:Request, res: Response, next: NextFunction) => {
-  let jobPosts: any = await new JobPost().fetchAll();
-  res.json(jobPosts);
-});
+// router.get("/all", async (req:Request, res: Response, next: NextFunction) => {
+//   let jobPosts: any = await new JobPost().fetchAll();
+//   res.json(jobPosts);
+// });
 
 router.get("/id/:id", async (req: Request, res: Response) => {
   let jobPost = await JobPost.where("id", id).fetch();
@@ -25,6 +26,8 @@ router.post("/users", async (req, res) => {
   }).save();
   res.json(user);
 });
+
+router.get("/all", getAllJobPosts);
 
 const cache = new NodeCache({ stdTTL: 300 });
 

@@ -1,11 +1,6 @@
 import Knex from "knex";
 import BookShelf from "bookshelf";
-
-const dbClient: string = "mysql";
-const dbName: string = "JobPostDB";
-const host: string = "localhost";
-const dbUsername: string = "root";
-const dbPassword: string = "Forget14";
+import { dbClient, dbName, dbPassword, dbUsername, host } from "./dbConfigDetails";
 
 export const knexConfig: any = Knex({
   client: dbClient,
