@@ -3,11 +3,14 @@ import mockKnex from "mock-knex";
 import chai from "chai";
 import { set, reset } from "mockdate";
 import { getAllJobPosts } from "../controllers/jobPostController";
+import request from "supertest";
+const assert = chai.assert;
 
 const expect = chai.expect;
 const tracker = mockKnex.getTracker();
 
 describe("Test JobPost API", () => {
+
   const date = "2021-11-30T18:10:10.441Z";
   let bookShelfForTest: any;
   beforeEach(() => {
