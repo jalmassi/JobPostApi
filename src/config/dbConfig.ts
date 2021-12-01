@@ -2,6 +2,8 @@ import Knex from "knex";
 import BookShelf from "bookshelf";
 import { dbClient, dbName, dbPassword, dbUsername, host } from "./dbConfigDetails";
 
+const isDebug: boolean = (process.env.NODE_ENV === 'test') ? false : true;
+
 export const knexConfig: any = Knex({
   client: dbClient,
   connection: {
@@ -11,26 +13,8 @@ export const knexConfig: any = Knex({
     password: dbPassword,
   },
   acquireConnectionTimeout: 10000,
-  debug: true,
+  debug: isDebug,
 });
 
 export const bookShelf: any = BookShelf(knexConfig);
 
-// const dbConfig = {
-//   host: host,
-//   user: dbUsername,
-//   password: dbPassword,
-// };
-
-// const con = createConnection({
-//   ...dbConfig,
-// });
-
-// con.connect(function (err: Error) {
-//   if (err) throw err;
-//   console.log("Connected!");
-//   con.query("CREATE DATABASE JobPostDB", function (err: Error, result: any) {
-//     if (err) throw err;
-//     console.log("Database created");
-//   });
-// });

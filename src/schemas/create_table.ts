@@ -1,12 +1,19 @@
 import { knexConfig } from "../config/dbConfig";
 
-export const createJobPostTable = knexConfig.schema
+export const createJobPostApplicationTable = knexConfig.schema
   .createTableIfNotExists("jobposts", (table: any) => {
     table.increments("id");
     table.string("title");
     table.string("description");
     table.string("location");
     table.integer("hourlyPayRate");
+    table.timestamps();
+  })
+  .createTableIfNotExists("applications", (table: any) => {
+    table.increments("id");
+    table.string("name");
+    table.string("currentjob");
+    table.string("location");
     table.timestamps();
   })
   .then(() => {
