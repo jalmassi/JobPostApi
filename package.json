@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "ts-node ./src/index.ts",
-    "test": "ts-node-test src/tests/*.test.ts",
+    "test": "mocha -r ts-node/register ./src/tests/*.test.ts",
     "dev": "ts-node-dev --respawn ./src/index.ts"
   },
   "keywords": [],
@@ -30,6 +30,7 @@
     "axios": "^0.24.0",
     "body-parser": "^1.19.0",
     "bookshelf": "^1.2.0",
+    "chai": "^4.3.4",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "global": "^4.4.0",
@@ -38,6 +39,7 @@
     "mock-knex": "^0.4.10",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
-    "node-cache": "^5.1.2"
+    "node-cache": "^5.1.2",
+    "supertest": "^6.1.6"
   }
 }

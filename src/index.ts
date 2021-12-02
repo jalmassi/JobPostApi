@@ -8,7 +8,7 @@ import AppError from "./errors/AppError";
 import { createJobPostApplicationTable } from "./schemas/create_table";
 import { appRoute, jobpostRoute } from "./util/global";
 
-const app: Application = express();
+export const app: Application = express();
 app.use(logger("combined"));
 app.use(appRoute, applications);
 app.use(jobpostRoute, jobposts);

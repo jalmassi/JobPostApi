@@ -10,3 +10,8 @@ export interface ApplicationDAO {
   currentJob: string;
   location: string;
 }
+
+export interface JobPostAppDAO {
+  jobposts_id: number;
+  applications_id: number;
+}

@@ -1,11 +1,12 @@
 import { knexConfig } from "../config/dbConfig";
-import { applicationsData, jobpostsData } from "./starting_data";
+import { applicationsData, jobpostsappData, jobpostsData } from "./starting_data";
 
-export const createJobPostApplicationTable = knexConfig.schema.dropTableIfExists("jobposts").then();
+export const createJobPostApplicationTable = knexConfig.schema.dropTableIfExists("jobposts_applications").then();
+knexConfig.schema.dropTableIfExists("jobposts").then();
 knexConfig.schema.dropTableIfExists("applications").then();
 knexConfig.schema
   .createTableIfNotExists("jobposts", (table: any) => {
-    table.increments("id");
+    table.increments("id").primary();
     table.string("title");
     table.string("description");
     table.string("location");
@@ -14,10 +15,16 @@ knexConfig.schema
     table.timestamp("updated_at").defaultTo(knexConfig.fn.now());
   })
   .createTableIfNotExists("applications", (table: any) => {
-    table.increments("id");
+    table.increments("id").primary();
     table.string("name");
     table.string("currentJob");
     table.string("location");
+    table.timestamp("created_at").defaultTo(knexConfig.fn.now());
+    table.timestamp("updated_at").defaultTo(knexConfig.fn.now());
+  })
+  .createTableIfNotExists("jobposts_applications", (table: any) => {
+    table.integer("jobposts_id").unsigned().references("id").inTable("jobposts").notNull();
+    table.integer("applications_id").unsigned().references("id").inTable("applications").notNull();
     table.timestamp("created_at").defaultTo(knexConfig.fn.now());
     table.timestamp("updated_at").defaultTo(knexConfig.fn.now());
   })
@@ -26,6 +33,9 @@ knexConfig.schema
   })
   .then(() => {
     return knexConfig("applications").insert(applicationsData).returning("*");
+  })
+  .then(() => {
+    return knexConfig("jobposts_applications").insert(jobpostsappData).returning("*");
   })
   .catch((error: Error) => {
     console.log(error);
