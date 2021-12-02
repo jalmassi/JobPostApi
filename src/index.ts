@@ -14,7 +14,8 @@ app.use(appRoute, applications);
 app.use(jobpostRoute, jobposts);
 app.use(bodyParser.json());
 
-Promise.all([createJobPostApplicationTable]);
+// Promise.all([createJobPostApplicationTable]);
+createJobPostApplicationTable();
 
 const PORT: any = process.env.PORT || 3000;
 const startServer = (port: number | string) => {

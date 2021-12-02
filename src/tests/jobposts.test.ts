@@ -20,7 +20,6 @@ describe("Test JobPost API", () => {
   beforeEach(() => {
     set(date);
     bookShelfForTest = bookShelf;
-    Promise.all([createJobPostApplicationTable]).then();
   });
   afterEach(() => {
     reset();
@@ -30,6 +29,7 @@ describe("Test JobPost API", () => {
 
   describe("get all job posts", () => {
     before(() => {
+      Promise.all([createJobPostApplicationTable]).then();
       tracker.on("query", (query) => {
         const results = [
           {
@@ -47,6 +47,9 @@ describe("Test JobPost API", () => {
     });
 
     describe("Job Posts API app tests", () => {
+      before(async () => {
+        await createJobPostApplicationTable();
+      });
       describe("express API request tests", () => {
         it("get all: success message", function (done) {
           request(app).get(`${jobPostEndpoint}/all`).expect("Content-Type", /json/).expect(200, { success: true, data: [] }, done);
