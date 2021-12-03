@@ -9,43 +9,39 @@ const expect = chai.expect;
 // const global = require("../util/global");
 // const postsDefaultResponse = require("./mocks/posts-tech-id-asc");
 
-chai.use(require("chai-sorted"));
+// chai.use(require("chai-sorted"));
 
-const app = require("../app.js");
+// const app = require("../app.js");
 
-const noTagError = {
-  status: "BAD_REQUEST",
-  message: "Bad request",
-  details: "No tag parameter included",
-};
+// const noTagError = {
+//   status: "BAD_REQUEST",
+//   message: "Bad request",
+//   details: "No tag parameter included",
+// };
 
-const jobPostEndpoint: string = "/api/jobposts";
-const applicationEndpoint: string = "/api/apps";
-const apiNoTagError = { error: "The tag parameter is required" };
+// const jobPostEndpoint: string = "/api/jobposts";
+// const applicationEndpoint: string = "/api/apps";
+// const apiNoTagError = { error: "The tag parameter is required" };
 
-describe("Job Posts API app tests", () => {
-  describe("express API request tests", () => {
-    it("get all: success message", function (done) {
-      request(app).get(jobPostEndpoint).expect("Content-Type", /json/).expect(200, { success: true }, done);
-    });
-    it("get all: success message", function (done) {
-      console.log("testing");
-    });
-
-    it("return posts test - multiple tag parameter (parameters: 'tech,health', 'id', 'asc')", function (done) {
-      request(app).get(jobPostEndpoint).expect("Content-Type", /json/).expect(200, done);
-    });
-    it("return posts test - sort by reads in ascending order (parameters: 'culture'', 'reads', 'asc')", function (done) {
-      request(app).get(jobPostEndpoint).expect("Content-Type", /json/).expect(200, done);
-    });
-    it("return posts test - sort by reads in descending order (parameters: 'politics', 'reads', 'desc')", function (done) {
-      request(app).get(jobPostEndpoint).expect("Content-Type", /json/).expect(200, done);
-    });
-    it("return posts test - sort by authorId in EXPLICIT query parameter of descending order  (parameters: 'politics', 'authorId', 'asc')", function (done) {
-      request(app).get(jobPostEndpoint).expect("Content-Type", /json/).expect(200, done);
-    });
-  });
-});
+// describe("Job Posts API app tests", () => {
+//   describe("express API request tests", () => {
+//     it("get all: success message", function (done) {
+//       request(app).get(jobPostEndpoint).expect("Content-Type", /json/).expect(200, done);
+//     });
+//     it("return posts test - multiple tag parameter (parameters: 'tech,health', 'id', 'asc')", function (done) {
+//       request(app).get(jobPostEndpoint).expect("Content-Type", /json/).expect(200, done);
+//     });
+//     it("return posts test - sort by reads in ascending order (parameters: 'culture'', 'reads', 'asc')", function (done) {
+//       request(app).get(jobPostEndpoint).expect("Content-Type", /json/).expect(200, done);
+//     });
+//     it("return posts test - sort by reads in descending order (parameters: 'politics', 'reads', 'desc')", function (done) {
+//       request(app).get(jobPostEndpoint).expect("Content-Type", /json/).expect(200, done);
+//     });
+//     it("return posts test - sort by authorId in EXPLICIT query parameter of descending order  (parameters: 'politics', 'authorId', 'asc')", function (done) {
+//       request(app).get(jobPostEndpoint).expect("Content-Type", /json/).expect(200, done);
+//     });
+//   });
+// });
 // it("check if posts are in ascending order for 'popularity'  (parameters: 'politics', 'popularity', 'asc')", function (done) {
 //   request(app)
 //     .get(jobPostEndpoint)

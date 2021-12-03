@@ -6,7 +6,8 @@ export const createJobPostApplicationTable = async () => {
   await knexConfig.schema.dropTableIfExists("jobposts").then();
   await knexConfig.schema.dropTableIfExists("applications").then();
   await knexConfig.schema
-    .createTableIfNotExists("jobposts", (table: any) => {
+    .hasTable("jobposts")
+    .createTable("jobposts", (table: any) => {
       table.increments("id").primary();
       table.string("title");
       table.string("description");
@@ -15,7 +16,8 @@ export const createJobPostApplicationTable = async () => {
       table.timestamp("created_at").defaultTo(knexConfig.fn.now());
       table.timestamp("updated_at").defaultTo(knexConfig.fn.now());
     })
-    .createTableIfNotExists("applications", (table: any) => {
+    .hasTable("applications")
+    .createTable("applications", (table: any) => {
       table.increments("id").primary();
       table.string("name");
       table.string("currentJob");
@@ -23,20 +25,22 @@ export const createJobPostApplicationTable = async () => {
       table.timestamp("created_at").defaultTo(knexConfig.fn.now());
       table.timestamp("updated_at").defaultTo(knexConfig.fn.now());
     })
-    .createTableIfNotExists("jobposts_applications", (table: any) => {
+    .hasTable("jobposts_applications")
+    .createTable("jobposts_applications", (table: any) => {
       table.integer("jobposts_id").unsigned().references("id").inTable("jobposts").notNull();
       table.integer("applications_id").unsigned().references("id").inTable("applications").notNull();
       table.timestamp("created_at").defaultTo(knexConfig.fn.now());
       table.timestamp("updated_at").defaultTo(knexConfig.fn.now());
     })
     .then(() => {
-      return knexConfig("jobposts").insert(jobpostsData).returning("*");
+      return knexConfig("jobposts").insert(jobpostsData);
     })
     .then(() => {
-      return knexConfig("applications").insert(applicationsData).returning("*");
+      return knexConfig("applications").insert(applicationsData);
     })
     .then(() => {
-      return knexConfig("jobposts_applications").insert(jobpostsappData).returning("*");
+      console.log("inside jobposts_applications");
+      return knexConfig("jobposts_applications").insert(jobpostsappData);
     })
     .catch((error: Error) => {
       console.log(error);
