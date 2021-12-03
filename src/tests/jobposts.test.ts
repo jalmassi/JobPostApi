@@ -15,18 +15,6 @@ const jobPostEndpoint: string = "/api/jobposts";
 const applicationEndpoint: string = "/api/apps";
 
 describe("Test JobPost API", () => {
-  // const date = "2021-11-30T18:10:10.441Z";
-  // let bookShelfForTest: any;
-  // beforeEach(() => {
-  //   set(date);
-  //   bookShelfForTest = bookShelf;
-  // });
-  // afterEach(() => {
-  //   reset();
-  //   return bookShelfForTest.knex.destroy();
-  // });
-  // tracker.install();
-
   describe("get all job posts", () => {
     it("get all: success message", function (done) {
       request(app)
@@ -57,25 +45,5 @@ describe("Test JobPost API", () => {
         .expect("Content-Type", /json/)
         .expect(200, done);
     });
-    // it("return posts test - sort by reads in descending order (parameters: 'politics', 'reads', 'desc')", function (done) {
-    //   request(app).get(jobPostEndpoint).expect("Content-Type", /json/).expect(200, done);
-    // });
-    // it("return posts test - sort by authorId in EXPLICIT query parameter of descending order  (parameters: 'politics', 'authorId', 'asc')", function (done) {
-    //   request(app).get(jobPostEndpoint).expect("Content-Type", /json/).expect(200, done);
-    // });
-    // });
-    // });
-    // it('should return 1 user', () => {
-    //         return getAllJobPosts
-    //             .then((res) => {
-    //                 const users = res.toJSON();
-
-    //                 expect(users).to.have.property('length', 1);
-    //                 expect(users[0]).to.have.property('esp', false);
-    //                 expect(users[1]).to.have.property('firstName', 'B');
-    //                 expect(users[2]).to.have.property('lastName', 'C');
-    //             })
-    //         ;
-    // });
   });
 });
